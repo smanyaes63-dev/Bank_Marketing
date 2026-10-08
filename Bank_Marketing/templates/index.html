@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bank Marketing AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="logo">
+                🏦
+            </div>
+
+            <div>
+                <h1>Bank Marketing AI</h1>
+
+                <p>
+                    Intelligent customer subscription prediction
+                    using Machine Learning
+                </p>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN CONTAINER ================= -->
+
+    <main class="container">
+
+        <div class="intro">
+
+            
+            <h2>Predict Customer Subscription</h2>
+
+            <p>
+                Enter the customer's profile and campaign information
+                to estimate the likelihood of subscribing to a term deposit.
+            </p>
+
+        </div>
+
+
+        <!-- ================= FORM ================= -->
+
+        <form action="/predict" method="POST">
+
+
+            <!-- ================= CUSTOMER INFORMATION ================= -->
+
+            <section class="card">
+
+                <div class="section-header">
+
+                    <div class="section-icon">
+                        👤
+                    </div>
+
+                    <div>
+                        <h3>Customer Information</h3>
+
+                        <p>
+                            Basic information about the customer
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <!-- Age -->
+
+                    <div class="form-group">
+
+                        <label for="age">
+                            Age
+                        </label>
+
+                        <input
+                            type="number"
+                            id="age"
+                            name="age"
+                            min="18"
+                            max="100"
+                            placeholder="e.g. 35"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Job -->
+
+                    <div class="form-group">
+
+                        <label for="job">
+                            Job
+                        </label>
+
+                        <select id="job" name="job" required>
+
+                            <option value="" disabled selected>
+                                Select job
+                            </option>
+
+                            <option value="admin.">Admin</option>
+                            <option value="blue-collar">Blue-collar</option>
+                            <option value="entrepreneur">Entrepreneur</option>
+                            <option value="housemaid">Housemaid</option>
+                            <option value="management">Management</option>
+                            <option value="retired">Retired</option>
+                            <option value="self-employed">Self-employed</option>
+                            <option value="services">Services</option>
+                            <option value="student">Student</option>
+                            <option value="technician">Technician</option>
+                            <option value="unemployed">Unemployed</option>
+                            <option value="unknown">Unknown</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Marital -->
+
+                    <div class="form-group">
+
+                        <label for="marital">
+                            Marital Status
+                        </label>
+
+                        <select id="marital" name="marital" required>
+
+                            <option value="" disabled selected>
+                                Select status
+                            </option>
+
+                            <option value="married">Married</option>
+                            <option value="single">Single</option>
+                            <option value="divorced">Divorced</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Education -->
+
+                    <div class="form-group">
+
+                        <label for="education">
+                            Education
+                        </label>
+
+                        <select id="education" name="education" required>
+
+                            <option value="" disabled selected>
+                                Select education
+                            </option>
+
+                            <option value="primary">Primary</option>
+                            <option value="secondary">Secondary</option>
+                            <option value="tertiary">Tertiary</option>
+                            <option value="unknown">Unknown</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= FINANCIAL INFORMATION ================= -->
+
+            <section class="card">
+
+                <div class="section-header">
+
+                    <div class="section-icon">
+                        💰
+                    </div>
+
+                    <div>
+
+                        <h3>Financial Information</h3>
+
+                        <p>
+                            Customer's financial and loan information
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- Balance -->
+
+                    <div class="form-group">
+
+                        <label for="balance">
+                            Account Balance
+                        </label>
+
+                        <input
+                            type="number"
+                            id="balance"
+                            name="balance"
+                            placeholder="e.g. 2500"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Default -->
+
+                    <div class="form-group">
+
+                        <label for="default">
+                            Credit Default
+                        </label>
+
+                        <select id="default" name="default" required>
+
+                            <option value="" disabled selected>
+                                Select option
+                            </option>
+
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Housing -->
+
+                    <div class="form-group">
+
+                        <label for="housing">
+                            Housing Loan
+                        </label>
+
+                        <select id="housing" name="housing" required>
+
+                            <option value="" disabled selected>
+                                Select option
+                            </option>
+
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Personal Loan -->
+
+                    <div class="form-group">
+
+                        <label for="loan">
+                            Personal Loan
+                        </label>
+
+                        <select id="loan" name="loan" required>
+
+                            <option value="" disabled selected>
+                                Select option
+                            </option>
+
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= CAMPAIGN INFORMATION ================= -->
+
+            <section class="card">
+
+                <div class="section-header">
+
+                    <div class="section-icon">
+                        📊
+                    </div>
+
+                    <div>
+
+                        <h3>Campaign Information</h3>
+
+                        <p>
+                            Information related to the marketing campaign
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- Contact -->
+
+                    <div class="form-group">
+
+                        <label for="contact">
+                            Contact Type
+                        </label>
+
+                        <select id="contact" name="contact" required>
+
+                            <option value="" disabled selected>
+                                Select contact
+                            </option>
+
+                            <option value="cellular">Cellular</option>
+                            <option value="telephone">Telephone</option>
+                            <option value="unknown">Unknown</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Day -->
+
+                    <div class="form-group">
+
+                        <label for="day">
+                            Day of Contact
+                        </label>
+
+                        <input
+                            type="number"
+                            id="day"
+                            name="day"
+                            min="1"
+                            max="31"
+                            placeholder="1 - 31"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Month -->
+
+                    <div class="form-group">
+
+                        <label for="month">
+                            Month
+                        </label>
+
+                        <select id="month" name="month" required>
+
+                            <option value="" disabled selected>
+                                Select month
+                            </option>
+
+                            <option value="jan">January</option>
+                            <option value="feb">February</option>
+                            <option value="mar">March</option>
+                            <option value="apr">April</option>
+                            <option value="may">May</option>
+                            <option value="jun">June</option>
+                            <option value="jul">July</option>
+                            <option value="aug">August</option>
+                            <option value="sep">September</option>
+                            <option value="oct">October</option>
+                            <option value="nov">November</option>
+                            <option value="dec">December</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Duration -->
+
+                    <div class="form-group">
+
+                        <label for="duration">
+                            Call Duration
+                        </label>
+
+                        <div class="input-with-unit">
+
+                            <input
+                                type="number"
+                                id="duration"
+                                name="duration"
+                                min="0"
+                                placeholder="e.g. 300"
+                                required
+                            >
+
+                            <span>sec</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Campaign -->
+
+                    <div class="form-group">
+
+                        <label for="campaign">
+                            Campaign Contacts
+                        </label>
+
+                        <input
+                            type="number"
+                            id="campaign"
+                            name="campaign"
+                            min="1"
+                            placeholder="e.g. 2"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- pdays -->
+
+                    <div class="form-group">
+
+                        <label for="pdays">
+                            Days Since Previous Contact
+                        </label>
+
+                        <input
+                            type="number"
+                            id="pdays"
+                            name="pdays"
+                            placeholder="-1 if never contacted"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Previous -->
+
+                    <div class="form-group">
+
+                        <label for="previous">
+                            Previous Contacts
+                        </label>
+
+                        <input
+                            type="number"
+                            id="previous"
+                            name="previous"
+                            min="0"
+                            placeholder="e.g. 0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Previous Outcome -->
+
+                    <div class="form-group">
+
+                        <label for="poutcome">
+                            Previous Campaign Outcome
+                        </label>
+
+                        <select id="poutcome" name="poutcome" required>
+
+                            <option value="" disabled selected>
+                                Select outcome
+                            </option>
+
+                            <option value="unknown">Unknown</option>
+                            <option value="failure">Failure</option>
+                            <option value="other">Other</option>
+                            <option value="success">Success</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= PREDICT BUTTON ================= -->
+
+            <div class="action-area">
+
+                <button type="submit" class="predict-button">
+
+                    <span>Predict Subscription</span>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </button>
+
+                <p class="action-note">
+                    Prediction generated using the trained Gradient Boosting model
+                </p>
+
+            </div>
+
+
+        </form>
+
+
+
+        <!-- ================= PREDICTION RESULT ================= -->
+
+        {% if prediction %}
+
+        <section class="result-card">
+
+            <div class="result-icon">
+
+                {% if "likely" in prediction %}
+                    ✓
+                {% else %}
+                    !
+                {% endif %}
+
+            </div>
+
+
+            <div class="result-content">
+
+                <span class="result-label">
+                    PREDICTION RESULT
+                </span>
+
+                <h2>
+                    {{ prediction }}
+                </h2>
+
+                <div class="probability-container">
+
+                    <div class="probability-header">
+
+                        <span>
+                            Subscription Probability
+                        </span>
+
+                        <strong>
+                            {{ probability }}%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <div
+                            class="progress-fill"
+                            style="width: {{ probability }}%;">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        {% endif %}
+
+
+
+        <!-- ================= MODEL INFORMATION ================= -->
+
+        <section class="model-info">
+
+            <div class="model-info-item">
+
+                <span class="info-icon">
+                    🤖
+                </span>
+
+                <div>
+
+                    <strong>
+                        Gradient Boosting
+                    </strong>
+
+                    <span>
+                        Final ML Model
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="divider"></div>
+
+
+            <div class="model-info-item">
+
+                <span class="info-icon">
+                    📈
+                </span>
+
+                <div>
+
+                    <strong>
+                        90.59%
+                    </strong>
+
+                    <span>
+                        ROC-AUC Score
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="divider"></div>
+
+
+            <div class="model-info-item">
+
+                <span class="info-icon">
+                    🎯
+                </span>
+
+                <div>
+
+                    <strong>
+                        90.19%
+                    </strong>
+
+                    <span>
+                        Test Accuracy
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+
+            <p>
+                Bank Marketing Campaign Response Prediction
+            </p>
+
+            <span>
+                Machine Learning • Python • Flask
+            </span>
+
+        </footer>
+
+    </main>
+
+</body>
+
+</html>
